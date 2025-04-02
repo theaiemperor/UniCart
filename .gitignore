@@ -1,0 +1,104 @@
+### OS-Specific Files ###
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+### Node.js ###
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.*.local
+
+### Next.js ###
+.next/
+out/
+.vercel/
+*.swp
+
+### Expo (React Native) ###
+.expo/
+.expo-shared/
+android/
+ios/
+*.iml
+*.gradle
+.gradle/
+local.properties
+*.keystore
+*.jks
+fastlane/
+!fastlane/README.md
+
+### Temporary Files ###
+*.tmp
+*.temp
+*.swo
+*.swn
+*.bak
+*.pid
+*.seed
+*.pid.lock
+*.gz
+*.zip
+*.tar
+*.rar
+*.7z
+
+### Editor/IDE Files ###
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+### Build Output ###
+dist/
+build/
+coverage/
+*.map
+
+### Logs ###
+logs
+debug.log*
+
+### Git & Dependency Lock Files ###
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+### Firebase ###
+.firebase/
+.firebaserc
+*.firestore.rules
+*.firestore.indexes.json
+
+### Docker ###
+.dockerignore
+Dockerfile
+Dockerfile.*
+
+### CI/CD ###
+.github/
+.gitlab-ci.yml
+.circleci/
+
+### Miscellaneous ###
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+
+### Custom Excludes ###
+# Uncomment below if using private keys/certificates
+*.pem
+*.crt
+*.key
