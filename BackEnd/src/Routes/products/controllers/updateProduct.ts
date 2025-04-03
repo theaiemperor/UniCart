@@ -11,7 +11,7 @@ export default async function (req: Request<any>, res: any) {
 
         const [updatedProduct] = await db.update(productTable).set(updateFields).where(eq(productTable.id, +id)).returning();
         if (updatedProduct) {
-            res.status(200).json({message: "Product updated successfully."});
+            res.status(200).json(updatedProduct);
         } else {
             res.status(404).json({message: "Product not found"});
         }
