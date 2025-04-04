@@ -1,5 +1,6 @@
 import express from "express";
 import products from "./Routes/products";
+import auth from "./Routes/auth";
 
 
 const app = express()
@@ -11,11 +12,12 @@ app.use(express.json());
 
 
 // Routes
+app.use('/api/v1/products', products);
+app.use('/api/v1/auth', auth);
+
 app.get('/', (_, res) => {
     res.send('Hello from UniCart!')
 })
-
-app.use('/api/v1/products', products);
 
 
 app.listen(port, () => {
