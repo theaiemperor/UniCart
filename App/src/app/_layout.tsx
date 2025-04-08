@@ -1,16 +1,26 @@
-import { Slot } from "expo-router";
+import { Stack } from "expo-router";
 import "../static/global.css";
 import { GluestackUIProvider } from "../components/ui/gluestack-ui-provider";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Platform } from "react-native";
 
-export default function () {
+export default function RootLayout() {
+  const client = new QueryClient();
+  const isWeb = Platform.OS === "web";
+
   return (
     <>
-      <GluestackUIProvider mode="system">
-        <SafeAreaView style={{ flex: 1 }}>
-          <Slot />
-        </SafeAreaView>
-      </GluestackUIProvider>
+      <QueryClientProvider client={client}>
+        <GluestackUIProvider mode="system">
+          <Stack screenOptions={{ headerShown: !isWeb }}>
+            <Stack.Screen name="index" options={{ title: "Home" }} />
+            <Stack.Screen
+              name="products/index"
+              options={{ title: "Products" }}
+            />
+          </Stack>
+        </GluestackUIProvider>
+      </QueryClientProvider>
     </>
   );
 }

@@ -11,13 +11,20 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/html-elements": "0.4.2",
     "@expo/metro-runtime": "~4.0.1",
     "@gluestack-ui/button": "^1.0.14",
     "@gluestack-ui/icon": "^0.1.27",
+    "@gluestack-ui/image": "^0.1.17",
+    "@gluestack-ui/link": "^0.1.29",
     "@gluestack-ui/nativewind-utils": "^1.0.26",
     "@gluestack-ui/overlay": "^0.1.22",
+    "@gluestack-ui/spinner": "^0.1.15",
     "@gluestack-ui/toast": "^1.0.9",
+    "@tanstack/react-query": "^5.71.10",
+    "axios": "^1.8.4",
     "expo": "~52.0.42",
+    "expo-image": "~2.0.7",
     "expo-router": "~4.0.20",
     "expo-status-bar": "~2.0.1",
     "gluestack-ui": "^0.7.22",
@@ -33,6 +40,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@tanstack/eslint-plugin-query": "^5.71.5",
     "@types/react": "~18.3.12",
     "typescript": "^5.3.3"
   },
