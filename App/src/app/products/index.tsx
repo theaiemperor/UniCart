@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Spinner } from "@/src/components/ui/spinner";
 import { useBreakpointValue } from "@/src/components/ui/utils/use-break-point-value";
 
-import { fetchAllProducts } from "./api/products";
+import { fetchAllProducts } from "./logic/productsApi";
 
 export default function () {
   const { data, isLoading, isError } = useQuery({

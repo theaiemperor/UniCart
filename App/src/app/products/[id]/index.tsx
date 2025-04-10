@@ -9,11 +9,15 @@ import { IProduct } from "@/src/types/products";
 import { useQuery } from "@tanstack/react-query";
 import { Stack, useLocalSearchParams } from "expo-router";
 import { Image, Platform, Text, View } from "react-native";
-import { fetchProduct } from "../api/products";
+import { fetchProduct } from "../logic/productsApi";
+import useCart from "../../cart/hooks/useCart";
 
 export default function () {
-  const { id } = useLocalSearchParams();
-  const IMAGE_CLS = Platform.OS === "web" ? "h-screen" : "h-full";
+  const { id } = useLocalSearchParams() as { id: string };
+  const { addProduct, items } = useCart((state) => state);
+
+  const ITEM_HEIGHT = Platform.OS === "web" ? "h-screen" : "h-full";
+  const ITEM_IN_CART = id in items && items[id].quantity;
 
   const { data, isLoading, isError } = useQuery<IProduct>({
     queryKey: ["products", id],
@@ -53,7 +57,7 @@ export default function () {
   return (
     <View>
       <Stack.Screen name="products/[id]/index" options={{ title: data.name }} />
-      <View className={"p-2 sm:p-10 md:p-20 w-screen " + IMAGE_CLS}>
+      <View className={"p-2 sm:p-10 md:p-20 w-screen " + ITEM_HEIGHT}>
         <Card className="w-full h-full shadow-soft-1 ">
           <Image
             source={{ uri: data.image }}
@@ -67,13 +71,16 @@ export default function () {
             </Box>
             <Box>
               <Text>Price </Text>
-              <Heading size="lg">{data.price}</Heading>
+              <Heading size="lg">{data.price} Rs</Heading>
             </Box>
-
             <Box className="flex-col sm:flex-row w-full max-w-96 self-center">
-              <Button className="px-4 py-2 mr-0 mb-3 sm:mr-3 sm:mb-0 sm:flex-1">
+              <Button
+                className="px-4 py-2 mr-0 mb-3 sm:mr-3 sm:mb-0 sm:flex-1"
+                onPress={() => addProduct(data)}
+              >
                 <ButtonText size="sm">Add to cart</ButtonText>
               </Button>
+
               <Button
                 variant="outline"
                 className="px-4 py-2 border-outline-300 sm:flex-1"
@@ -83,6 +90,18 @@ export default function () {
                 </ButtonText>
               </Button>
             </Box>
+
+            {
+              <Text
+                className={
+                  (ITEM_IN_CART ? "" : "invisible") + " text-center -mt-5 "
+                }
+              >
+                This item is in your cart with{" "}
+                {items[id] && "quantity" in items[id] && items[id].quantity} in
+                quantity
+              </Text>
+            }
           </VStack>
         </Card>
       </View>
