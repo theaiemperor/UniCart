@@ -1,8 +1,9 @@
-import { StatusBar } from "expo-status-bar";
-import { Alert, Platform, View } from "react-native";
-import { Button, ButtonText } from "../components/ui/button";
-import { Text } from "../components/ui/text";
+import { Box } from "@/src/components/ui/box";
+import { Button, ButtonText } from "@/src/components/ui/button";
+import { Text } from "@/src/components/ui/text";
 import { Link } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { Alert, Platform } from "react-native";
 
 export default function Index() {
   async function greet() {
@@ -11,7 +12,7 @@ export default function Index() {
   }
 
   return (
-    <View className="h-screen justify-center items-center">
+    <Box className="h-full justify-center items-center">
       <Text className="my-5 text-4xl font-extrabold">Welcome to UniCart!</Text>
       <Button onPress={greet}>
         <ButtonText>Greet</ButtonText>
@@ -19,10 +20,10 @@ export default function Index() {
 
       <Link href={"/products"} asChild className="mt-5">
         <Button variant="link">
-          <ButtonText>Explore Products</ButtonText>
+          <ButtonText className="font-bold">Explore Products</ButtonText>
         </Button>
       </Link>
       <StatusBar style="auto" />
-    </View>
+    </Box>
   );
 }

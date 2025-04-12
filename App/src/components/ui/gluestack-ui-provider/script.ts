@@ -14,6 +14,6 @@ export default function (mode: string) {
     documentElement.classList.add(theme);
     documentElement.style.colorScheme = theme;
   } catch (e) {
-    console.error(e);
+    // console.error(e);
   }
 }

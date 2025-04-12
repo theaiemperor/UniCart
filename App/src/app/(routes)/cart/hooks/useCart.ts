@@ -1,6 +1,6 @@
-import { create } from "zustand";
-import { IProduct } from "@/src/types/products";
 import { IObj } from "@/src/types/common";
+import { IProduct } from "@/src/types/products";
+import { create } from "zustand";
 
 export interface ICartItem {
   quantity: number;

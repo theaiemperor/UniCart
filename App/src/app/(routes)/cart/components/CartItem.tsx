@@ -1,11 +1,11 @@
-import { Text } from "@/src/components/ui/text";
-import { ICartItem } from "../hooks/useCart";
 import { Card } from "@/src/components/ui/card";
-import { HStack } from "@/src/components/ui/hstack";
-import { VStack } from "@/src/components/ui/vstack";
-import { Image } from "@/src/components/ui/image";
 import { Heading } from "@/src/components/ui/heading";
+import { HStack } from "@/src/components/ui/hstack";
+import { Image } from "@/src/components/ui/image";
+import { Text } from "@/src/components/ui/text";
+import { VStack } from "@/src/components/ui/vstack";
 import { Link } from "expo-router";
+import { ICartItem } from "../hooks/useCart";
 
 interface Props extends ICartItem {
   id: string;

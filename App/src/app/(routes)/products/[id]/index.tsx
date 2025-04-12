@@ -1,22 +1,21 @@
-import React from "react";
 import { Box } from "@/src/components/ui/box";
 import { Button, ButtonText } from "@/src/components/ui/button";
 import { Card } from "@/src/components/ui/card";
 import { Heading } from "@/src/components/ui/heading";
+import { Image } from "@/src/components/ui/image";
 import { Spinner } from "@/src/components/ui/spinner";
+import { Text } from "@/src/components/ui/text";
 import { VStack } from "@/src/components/ui/vstack";
 import { IProduct } from "@/src/types/products";
 import { useQuery } from "@tanstack/react-query";
 import { Stack, useLocalSearchParams } from "expo-router";
-import { Image, Platform, Text, View } from "react-native";
-import { fetchProduct } from "../logic/productsApi";
 import useCart from "../../cart/hooks/useCart";
+import { fetchProduct } from "../logic/productsApi";
 
 export default function () {
   const { id } = useLocalSearchParams() as { id: string };
   const { addProduct, items } = useCart((state) => state);
 
-  const ITEM_HEIGHT = Platform.OS === "web" ? "h-screen" : "h-full";
   const ITEM_IN_CART = id in items && items[id].quantity;
 
   const { data, isLoading, isError } = useQuery<IProduct>({
@@ -26,43 +25,36 @@ export default function () {
 
   if (isLoading) {
     return (
-      <>
-        <Stack.Screen
-          name="products/[id]/index"
-          options={{ title: "Loading..." }}
-        />
-        <View className="flex-1 justify-center">
-          <Spinner size={"large"} />
-        </View>
-      </>
+      <Box className="flex-1 justify-center">
+        <Stack.Screen options={{ title: "Loading..." }} />
+        <Spinner size={"large"} />
+      </Box>
     );
   }
 
   if (!data || isError) {
     return (
-      <>
-        <Stack.Screen
-          name="products/[id]/index"
-          options={{ title: "Not found" }}
-        />
-        <View className="w-full h-screen flex justify-center items-center ">
+      <Box>
+        <Stack.Screen options={{ title: "Not found" }} />
+        <Box className="w-full h-screen flex justify-center items-center ">
           <Text className="text-xl md:text-5xl font-bold">
             {isError ? "Something went wrong!" : "Product Not found!"}
           </Text>
-        </View>
-      </>
+        </Box>
+      </Box>
     );
   }
 
   return (
-    <View>
-      <Stack.Screen name="products/[id]/index" options={{ title: data.name }} />
-      <View className={"p-2 sm:p-10 md:p-20 w-screen " + ITEM_HEIGHT}>
+    <Box>
+      <Stack.Screen options={{ title: data.name || "Product" }} />
+      <Box className={"p-2 w-full md:w-2/3 lg:w-1/2  self-center "}>
         <Card className="w-full h-full shadow-soft-1 ">
           <Image
             source={{ uri: data.image }}
-            className="w-full flex-1 "
+            className="w-full h-80 "
             resizeMode="contain"
+            alt={data.name}
           />
           <VStack className="p-4 px-2 h-max flex flex-col gap-9 ">
             <Box>
@@ -104,7 +96,7 @@ export default function () {
             }
           </VStack>
         </Card>
-      </View>
-    </View>
+      </Box>
+    </Box>
   );
 }
