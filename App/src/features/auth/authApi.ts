@@ -1,7 +1,7 @@
 import { backend } from "@/src/lib/axios";
-import useAuth, { IUserInfo } from "./useAuth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { verifyUserInfo } from "./authUtils";
+import useAuth from "./useAuth";
 
 interface ILoginProp {
   email: string;
