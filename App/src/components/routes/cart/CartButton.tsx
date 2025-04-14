@@ -3,7 +3,7 @@ import { Text } from "@/src/components/ui/text";
 import { Link } from "expo-router";
 import { ShoppingCart } from "lucide-react-native";
 import { TouchableOpacity, View } from "react-native";
-import useCart from "../hooks/useCart";
+import useCart from "../../../features/cart/useCart";
 
 export default function CartButton(props: any) {
   const { totalQuantity } = useCart((state) => state.meta);

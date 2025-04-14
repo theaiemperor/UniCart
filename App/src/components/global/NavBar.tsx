@@ -1,4 +1,4 @@
-import CartButton from "@/src/app/(routes)/cart/components/CartButton";
+import CartButton from "@/src/components/routes/cart/CartButton";
 import { Box } from "@/src/components/ui/box";
 import { Text } from "@/src/components/ui/text";
 import { Link, usePathname } from "expo-router";

@@ -1,3 +1,4 @@
+import ShowAlert from "@/src/components/global/ShowAlert";
 import { Button, ButtonText } from "@/src/components/ui/button";
 import {
   FormControl,
@@ -10,29 +11,8 @@ import { VStack } from "@/src/components/ui/vstack";
 import { useMutation } from "@tanstack/react-query";
 import { Link, useRouter } from "expo-router";
 import React, { useEffect, useRef, useState } from "react";
-import { Alert, Platform } from "react-native";
 import { register } from "../../features/auth/authApi";
 import { isValidEmail, validatePassword } from "../../features/auth/authUtils";
-
-function appLogin(fn: () => void) {
-  Alert.alert(
-    "Account Created!",
-    "Your account has been created Successfully.",
-    [
-      {
-        text: "Log in Now",
-        onPress: fn,
-      },
-    ]
-  );
-}
-
-function webLogin(fn: () => void) {
-  alert(
-    "Account Created Successfully.\nYou will be redirected to log in after closing this Alert"
-  );
-  fn();
-}
 
 export default function RegisterForm() {
   const router = useRouter();
@@ -53,10 +33,14 @@ export default function RegisterForm() {
   }
 
   const mutation = useMutation({
-    mutationFn: () => register({ email, password }),
-    onSuccess: () => {
-      Platform.OS === "web" ? webLogin(login) : appLogin(login);
-    },
+    mutationFn: () => register({ name: userName, email, password }),
+    onSuccess: () =>
+      ShowAlert({
+        title: "Account Created!",
+        description: "Your account has been created Successfully.",
+        buttonText: "Log in Now",
+        buttonFn: login,
+      }),
     onError: (error) => {
       setErrors(["Registration failed. Try again."]);
     },
@@ -129,7 +113,6 @@ export default function RegisterForm() {
         </FormControlLabel>
         <Input>
           <InputField
-            autoFocus
             value={email}
             ref={emailInputRef as any}
             placeholder="example@mail.com"

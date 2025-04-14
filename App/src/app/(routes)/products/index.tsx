@@ -5,8 +5,8 @@ import { useBreakpointValue } from "@/src/components/ui/utils/use-break-point-va
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { FlatList } from "react-native";
-import ProductItem from "./components/ProductItems";
-import { fetchAllProducts } from "./logic/productsApi";
+import ProductItem from "../../../components/routes/products/ProductItems";
+import { fetchAllProducts } from "../../../features/products/productsApi";
 
 export default function () {
   const { data, isLoading, isError, error } = useQuery({

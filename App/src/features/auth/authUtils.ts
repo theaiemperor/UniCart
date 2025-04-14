@@ -32,7 +32,6 @@ export function verifyUserInfo(info: IUserInfo | null | undefined): boolean {
 
   if (!info.token || info.token.length < 1) return false;
   if (!info.email || info.email.length < 1) return false;
-  if (!info.name || info.name.length < 1) return false;
 
   return true;
 }

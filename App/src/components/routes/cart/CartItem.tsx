@@ -1,11 +1,10 @@
 import { Card } from "@/src/components/ui/card";
-import { Heading } from "@/src/components/ui/heading";
 import { HStack } from "@/src/components/ui/hstack";
 import { Image } from "@/src/components/ui/image";
 import { Text } from "@/src/components/ui/text";
 import { VStack } from "@/src/components/ui/vstack";
 import { Link } from "expo-router";
-import { ICartItem } from "../hooks/useCart";
+import { ICartItem } from "../../../features/cart/useCart";
 
 interface Props extends ICartItem {
   id: string;
@@ -23,19 +22,21 @@ export default function (productInfo: Props) {
         />
         <VStack className="flex-1">
           <Link
-            className="cursor-pointer w-max"
+            className="cursor-pointer w-max max-w-fit"
             href={"/products/" + productInfo.id}
             asChild
           >
-            <Heading>{productInfo.name}</Heading>
+            <Text className="text-lg font-bold text-pretty">
+              {productInfo.name}
+            </Text>
           </Link>
           <Text>
             Total {productInfo.quantity} @{productInfo.price}Rs.
           </Text>
         </VStack>
-        <Heading>
+        <Text className="text-xl font-bold text-pretty">
           {(productInfo.quantity * productInfo.price).toFixed(2)} Rs.
-        </Heading>
+        </Text>
       </HStack>
     </Card>
   );

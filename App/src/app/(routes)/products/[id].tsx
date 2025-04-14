@@ -9,8 +9,8 @@ import { VStack } from "@/src/components/ui/vstack";
 import { IProduct } from "@/src/types/products";
 import { useQuery } from "@tanstack/react-query";
 import { Stack, useLocalSearchParams } from "expo-router";
-import useCart from "../../cart/hooks/useCart";
-import { fetchProduct } from "../logic/productsApi";
+import useCart from "../../../features/cart/useCart";
+import { fetchProduct } from "../../../features/products/productsApi";
 
 export default function () {
   const { id } = useLocalSearchParams() as { id: string };

@@ -1,4 +1,4 @@
-import CartButton from "@/src/app/(routes)/cart/components/CartButton";
+import CartButton from "@/src/components/routes/cart/CartButton";
 import { useBreakpointValue } from "@/src/components/ui/utils/use-break-point-value";
 import { Slot, Stack } from "expo-router";
 import { Platform } from "react-native";

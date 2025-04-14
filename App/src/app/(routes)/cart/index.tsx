@@ -5,8 +5,8 @@ import { HStack } from "@/src/components/ui/hstack";
 import { Text } from "@/src/components/ui/text";
 import { VStack } from "@/src/components/ui/vstack";
 import { Link } from "expo-router";
-import CartItem from "./components/CartItem";
-import useCart, { ICartStore } from "./hooks/useCart";
+import CartItem from "../../../components/routes/cart/CartItem";
+import useCart, { ICartStore } from "../../../features/cart/useCart";
 
 export default function () {
   const { items, meta } = useCart<ICartStore>((state) => state);
