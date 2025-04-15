@@ -7,7 +7,7 @@ export interface IOrderItem {
 
 export interface IOrder {
   id: number;
-  createdAt: Date;
+  createdAt: string;
   status: string;
   items: IOrderItem[];
 }
