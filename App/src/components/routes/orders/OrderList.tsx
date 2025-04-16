@@ -12,11 +12,14 @@ import { VStack } from "../../ui/vstack";
 function OrderItem({ order }: { order: IOrder }) {
   const totalItems = order.items.length;
   return (
-    <Link href={"/orders/" + order.id} className="p-2">
-      <TouchableOpacity className="w-full">
+    <Link href={"/orders/" + order.id} asChild>
+      <TouchableOpacity className="w-full p-2">
         <VStack className="gap-1">
           <HStack className="justify-between">
-            <Text> {new Date(order.createdAt).toDateString()} </Text>
+            <Text className="hover:text-pretty">
+              {" "}
+              {new Date(order.createdAt).toDateString()}{" "}
+            </Text>
             <Text className="font-bold">
               {" "}
               {totalOrderPrice(order.items)}Rs.
@@ -36,7 +39,7 @@ function OrderItem({ order }: { order: IOrder }) {
 
 export default function ({ orders }: { orders: IOrder[] }) {
   return (
-    <Card className="p-0 self-center w-full max-w-[500px]">
+    <Card className="p-0 w-full">
       <VStack>
         <FlatList
           data={orders}

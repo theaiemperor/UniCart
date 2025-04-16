@@ -7,5 +7,5 @@ export function totalOrderPrice(items: IOrderItem[]) {
     price += val.quantity * val.price;
   });
 
-  return price;
+  return price.toFixed(2);
 }

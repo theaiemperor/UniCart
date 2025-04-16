@@ -22,7 +22,7 @@ export default function () {
 
   const mutation = useMutation({
     mutationFn: () => createOrder(Object.values(items)),
-    onSuccess: () => {
+    onSuccess: (data) => {
       ShowAlert({
         title: "Order Created Successfully",
         description:
@@ -30,7 +30,7 @@ export default function () {
         buttonText: "View My Order",
         buttonFn: () => {
           clearCart();
-          router.push("/orders");
+          router.push("/orders/" + data.id);
         },
       });
     },

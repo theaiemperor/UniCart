@@ -1,18 +1,19 @@
 import Container from "@/src/components/global/Container";
 import ProtectRoute from "@/src/components/global/ProtectRoute";
-import OrderList from "@/src/components/routes/orders/OrderList";
+import OrderDetail from "@/src/components/routes/orders/OrderDetail";
 import { Box } from "@/src/components/ui/box";
-import { Divider } from "@/src/components/ui/divider";
 import { Spinner } from "@/src/components/ui/spinner";
 import { Text } from "@/src/components/ui/text";
-import { fetchAllOrders } from "@/src/features/orders/orderApi";
+import { fetchOrder } from "@/src/features/orders/orderApi";
 import { useQuery } from "@tanstack/react-query";
-import { PropsWithChildren } from "react";
+import { Stack, useLocalSearchParams } from "expo-router";
 
-function Orders() {
+function Details() {
+  const { id } = useLocalSearchParams();
+
   const { data, isError, isLoading } = useQuery({
-    queryKey: ["orders"],
-    queryFn: fetchAllOrders,
+    queryKey: ["orders", id],
+    queryFn: () => fetchOrder(+id),
   });
 
   if (isError) {
@@ -30,9 +31,9 @@ function Orders() {
   return (
     <Container>
       {data ? (
-        <OrderList orders={data} />
+        <OrderDetail orderInfo={data} />
       ) : (
-        <Text className="text-center text-pretty">You have no orders yet!</Text>
+        <Text className="text-center text-pretty">Order Not found!</Text>
       )}
     </Container>
   );
@@ -41,7 +42,8 @@ function Orders() {
 export default function () {
   return (
     <ProtectRoute>
-      <Orders />
+      <Stack.Screen options={{ title: "Order Detail page" }} />
+      <Details />
     </ProtectRoute>
   );
 }

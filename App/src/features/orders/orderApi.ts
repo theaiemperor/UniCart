@@ -12,3 +12,8 @@ export async function fetchAllOrders(): Promise<IOrder[]> {
   const { data } = await backend.get("/orders");
   return data || [];
 }
+
+export async function fetchOrder(id: number): Promise<IOrder> {
+  const { data } = await backend.get("/orders/" + id);
+  return data || {};
+}
