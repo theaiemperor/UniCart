@@ -1,10 +1,10 @@
 import { Button, ButtonText } from "@/src/components/ui/button";
-import useCart from "./useCart";
-import { useMutation } from "@tanstack/react-query";
+import useCart from "../../../features/cart/useCart";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import ShowAlert from "@/src/components/global/ShowAlert";
 import { Link, useRouter } from "expo-router";
 import ProtectRoute from "@/src/components/global/ProtectRoute";
-import { createOrder } from "../orders/orderApi";
+import { createOrder } from "../../../features/orders/orderApi";
 
 function FallbackBtn() {
   return (
@@ -19,6 +19,7 @@ function FallbackBtn() {
 export default function () {
   const { items, clearCart } = useCart();
   const router = useRouter();
+  const client = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: () => createOrder(Object.values(items)),
@@ -30,7 +31,8 @@ export default function () {
         buttonText: "View My Order",
         buttonFn: () => {
           clearCart();
-          router.push("/orders/" + data.id);
+          client.invalidateQueries({ queryKey: ["orders"] });
+          router.push("/orders/" + data.id + "?refresh=true");
         },
       });
     },

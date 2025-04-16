@@ -1,5 +1,6 @@
 import Container from "@/src/components/global/Container";
 import ProtectRoute from "@/src/components/global/ProtectRoute";
+import CancelOrderButton from "@/src/components/routes/orders/CancelOrderButton";
 import OrderDetail from "@/src/components/routes/orders/OrderDetail";
 import { Box } from "@/src/components/ui/box";
 import { Spinner } from "@/src/components/ui/spinner";
@@ -31,7 +32,10 @@ function Details() {
   return (
     <Container>
       {data ? (
-        <OrderDetail orderInfo={data} />
+        <Box>
+          <OrderDetail orderInfo={data} />
+          {data.status !== "Cancelled" && <CancelOrderButton id={data?.id} />}
+        </Box>
       ) : (
         <Text className="text-center text-pretty">Order Not found!</Text>
       )}

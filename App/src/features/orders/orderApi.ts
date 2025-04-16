@@ -17,3 +17,8 @@ export async function fetchOrder(id: number): Promise<IOrder> {
   const { data } = await backend.get("/orders/" + id);
   return data || {};
 }
+
+export async function cancelOrder(id: number) {
+  const { data } = await backend.patch("orders/" + id);
+  return data;
+}

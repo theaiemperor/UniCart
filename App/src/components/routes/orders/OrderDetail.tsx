@@ -39,7 +39,14 @@ export default function ({ orderInfo }: { orderInfo: IOrder }) {
         <ShowData title="Date">
           {new Date(orderInfo.createdAt).toDateString()}
         </ShowData>
-        <ShowData title="Status">{orderInfo.status}</ShowData>
+        <ShowData
+          title="Status"
+          descriptionClass={
+            orderInfo.status === "Cancelled" ? "text-error-500" : ""
+          }
+        >
+          {orderInfo.status}
+        </ShowData>
         <ShowData title="Total Price">
           {totalOrderPrice(orderInfo.items) + " Rs."}
         </ShowData>

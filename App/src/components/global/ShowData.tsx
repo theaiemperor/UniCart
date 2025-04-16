@@ -4,17 +4,26 @@ import { VStack } from "../ui/vstack";
 
 interface Props extends PropsWithChildren {
   title: string;
+  titleClass?: string;
+  descriptionClass?: string;
 }
 
-function ShowData({ children, title }: Props) {
+function ShowData({ children, title, ...cProps }: Props) {
   function TitleWrapper(props: PropsWithChildren) {
     return (
       <VStack>
-        <Text className="text-sm md:text-xs">{title}</Text>
+        <Text className={"text-sm md:text-xs " + cProps.titleClass}>
+          {title}
+        </Text>
         {isValidElement(children) ? (
           <Fragment>{children}</Fragment>
         ) : (
-          <Text className="text-lg md:text-md text-pretty font-bold">
+          <Text
+            className={
+              "text-lg md:text-md text-pretty font-bold " +
+              cProps.descriptionClass
+            }
+          >
             {props.children}
           </Text>
         )}

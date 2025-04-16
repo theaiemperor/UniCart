@@ -7,7 +7,7 @@ import { VStack } from "@/src/components/ui/vstack";
 import { Link } from "expo-router";
 import CartItem from "../../../components/routes/cart/CartItem";
 import useCart, { ICartStore } from "../../../features/cart/useCart";
-import CheckOut from "@/src/features/cart/CheckOut";
+import CheckOutButton from "@/src/components/routes/cart/CheckOutButton";
 
 export default function () {
   const { items, meta } = useCart<ICartStore>((state) => state);
@@ -38,7 +38,7 @@ export default function () {
           Subtotal({meta.totalQuantity} items) :{" "}
           <Text className="font-bold">{meta.totalPrice}Rs.</Text>
         </Text>
-        <CheckOut />
+        <CheckOutButton />
       </HStack>
     </VStack>
   );

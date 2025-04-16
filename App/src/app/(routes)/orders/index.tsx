@@ -2,12 +2,10 @@ import Container from "@/src/components/global/Container";
 import ProtectRoute from "@/src/components/global/ProtectRoute";
 import OrderList from "@/src/components/routes/orders/OrderList";
 import { Box } from "@/src/components/ui/box";
-import { Divider } from "@/src/components/ui/divider";
 import { Spinner } from "@/src/components/ui/spinner";
 import { Text } from "@/src/components/ui/text";
 import { fetchAllOrders } from "@/src/features/orders/orderApi";
 import { useQuery } from "@tanstack/react-query";
-import { PropsWithChildren } from "react";
 
 function Orders() {
   const { data, isError, isLoading } = useQuery({
