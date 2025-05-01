@@ -30,7 +30,7 @@ function Orders() {
       {data ? (
         <OrderList orders={data} />
       ) : (
-        <Text className="text-center text-pretty">You have no orders yet!</Text>
+        <Text className="text-center">You have no orders yet!</Text>
       )}
     </Container>
   );

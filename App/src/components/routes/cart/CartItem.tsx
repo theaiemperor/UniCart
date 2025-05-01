@@ -26,15 +26,13 @@ export default function (productInfo: Props) {
             href={"/products/" + productInfo.id}
             asChild
           >
-            <Text className="text-lg font-bold text-pretty">
-              {productInfo.name}
-            </Text>
+            <Text className="text-lg font-bold ">{productInfo.name}</Text>
           </Link>
           <Text>
             Total {productInfo.quantity} @{productInfo.price}Rs.
           </Text>
         </VStack>
-        <Text className="text-xl font-bold text-pretty">
+        <Text className="text-xl font-bold">
           {(productInfo.quantity * productInfo.price).toFixed(2)} Rs.
         </Text>
       </HStack>

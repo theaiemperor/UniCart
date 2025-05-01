@@ -27,7 +27,7 @@ function ProtectedRouteScreen(props: IProtectedRouteScreen) {
           resizeMode="contain"
         />
 
-        <Text className="text-3xl font-bold text-center text-pretty text-error-800">
+        <Text className="text-3xl font-bold text-center text-error-800">
           {props.title || "UnAuthorized Action"}
         </Text>
 

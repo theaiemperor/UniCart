@@ -16,10 +16,7 @@ function OrderItem({ order }: { order: IOrder }) {
       <TouchableOpacity className="w-full p-2">
         <VStack className="gap-1">
           <HStack className="justify-between">
-            <Text className="hover:text-pretty">
-              {" "}
-              {new Date(order.createdAt).toDateString()}{" "}
-            </Text>
+            <Text> {new Date(order.createdAt).toDateString()} </Text>
             <Text className="font-bold">
               {" "}
               {totalOrderPrice(order.items)}Rs.

@@ -17,7 +17,7 @@ export default function NotFoundScreen() {
           resizeMode="contain"
         />
 
-        <Text className="text-3xl font-bold text-center text-pretty">
+        <Text className="text-3xl font-bold text-center">
           Oops! Page Not Found
         </Text>
 

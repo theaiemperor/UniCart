@@ -37,7 +37,7 @@ function Details() {
           {data.status !== "Cancelled" && <CancelOrderButton id={data?.id} />}
         </Box>
       ) : (
-        <Text className="text-center text-pretty">Order Not found!</Text>
+        <Text className="text-center ">Order Not found!</Text>
       )}
     </Container>
   );

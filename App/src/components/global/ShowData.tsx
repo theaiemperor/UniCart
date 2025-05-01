@@ -20,8 +20,7 @@ function ShowData({ children, title, ...cProps }: Props) {
         ) : (
           <Text
             className={
-              "text-lg md:text-md text-pretty font-bold " +
-              cProps.descriptionClass
+              "text-lg md:text-md font-bold " + cProps.descriptionClass
             }
           >
             {props.children}

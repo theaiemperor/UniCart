@@ -11,8 +11,8 @@ export default function () {
 
   if (!userInfo) {
     return (
-      <Card className="gap-3">
-        <ShowData title="Your info">
+      <Card className="gap-5">
+        <ShowData title="Your info" descriptionClass="text-background-800">
           You are not currently logged in. Log in to view your account info and
           manage your account.
         </ShowData>

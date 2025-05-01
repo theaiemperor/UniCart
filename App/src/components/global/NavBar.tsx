@@ -31,9 +31,7 @@ function NavLink({ children, href }: INavLink) {
   return (
     <Link href={href} asChild>
       <TouchableOpacity className="relative inline-block text-lg font-medium group">
-        <Text className="font-semibold text-pretty relative z-10">
-          {children}
-        </Text>
+        <Text className="font-semibold relative z-10">{children}</Text>
         <Box
           className={`absolute bottom-0 h-[2px] bg-current transition-all duration-300 ease-out ${underlineClass}`}
         />
