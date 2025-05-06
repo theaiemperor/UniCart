@@ -27,7 +27,7 @@ function Orders() {
 
   return (
     <Container>
-      {data ? (
+      {data?.length ? (
         <OrderList orders={data} />
       ) : (
         <Text className="text-center">You have no orders yet!</Text>

@@ -11,19 +11,26 @@ import { GluestackUIProvider } from "../components/ui/gluestack-ui-provider";
 import { loadUserInfoFromStorage } from "../features/auth/authApi";
 import useSettings from "../features/settings/useSettings";
 import "../static/global.css";
+import { useColorScheme } from "react-native";
 
 export default function RootLayout() {
   const client = new QueryClient();
+  const schema = useColorScheme();
 
   const {
     settings: {
-      interface: { isDark },
+      interface: { isDark, current },
     },
+    updateSettings,
   } = useSettings();
 
   useEffect(() => {
     loadUserInfoFromStorage();
-  }, []);
+
+    updateSettings({
+      interface: { isDark: current === "system" && schema === "dark", current },
+    });
+  }, [schema]);
 
   return (
     <QueryClientProvider client={client}>

@@ -44,7 +44,7 @@ export default function ({ options = {}, initialValue }: Props) {
             }
           >
             <Text
-              className={`text-center font-bold ${isSelected ? "text-background-100 " : "dark:text-background-800"}`}
+              className={`text-center font-bold ${isSelected ? "text-background-100 " : "text-background-900"}`}
             >
               {option.charAt(0).toUpperCase() + option.slice(1)}
             </Text>
